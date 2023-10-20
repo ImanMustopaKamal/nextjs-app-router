@@ -1,0 +1,3 @@
+DATABASE_URL="mysql://root:goblog888@127.0.0.1:3306/e-commerce"
+NODE_ENV="development"
+NEXTAUTH_SECRET="secret"
