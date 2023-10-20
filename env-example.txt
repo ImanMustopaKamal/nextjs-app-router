@@ -1,3 +1,5 @@
 DATABASE_URL="mysql://root:goblog888@127.0.0.1:3306/e-commerce"
 NODE_ENV="development"
 NEXTAUTH_SECRET="secret"
+GOOGLE_CLIENT_ID="493890523881-i9av6a1vf6ipe24eaqpiu179ols05bm9.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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

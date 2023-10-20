@@ -68,10 +68,10 @@ export default function SignUpPage() {
     axios
       .post("/api/auth/sign-up", values)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       })
       .finally(() => {
         setIsLoading(false);

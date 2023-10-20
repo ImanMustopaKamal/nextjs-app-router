@@ -33,8 +33,8 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 interface currentUserProps {
   currentUser?: User | null;
@@ -43,22 +43,7 @@ interface currentUserProps {
 export default function Header(props: currentUserProps) {
   const { currentUser } = props;
 
-  const pathName = usePathname();
-
-  const [hiddenPath, setHiddenPath] = useState(["sign-in", "sign-up"]);
-  const [showHeader, setShowHeader] = useState(true);
-
-  // useEffect(() => {
-  //   if (pathName) {
-  //     if(pathName !== "/") {
-  //       hiddenPath.includes(pathName) ? setShowHeader(true) : setShowHeader(false);
-  //     } else {
-  //       setShowHeader(true);
-  //     }
-  //   } else {
-  //     setShowHeader(true);
-  //   }
-  // }, [pathName]);
+  console.log(currentUser);
 
   return (
     <nav
@@ -112,14 +97,21 @@ export default function Header(props: currentUserProps) {
       </ul>
       <div className="hidden sm:flex items-center gap-4">
         {currentUser ? (
-          <Button
-            variant="default"
-            className="w-full"
-            onClick={() => signOut()}
-          >
-            Keluar
-          </Button>
+          <>
+            <Avatar>
+              <AvatarImage
+                src={currentUser?.image || "https://github.com/shadcn.png"}
+              />
+            </Avatar>
+          </>
         ) : (
+          // <Button
+          //   variant="default"
+          //   className="w-full"
+          //   onClick={() => signOut()}
+          // >
+          //   Keluar
+          // </Button>
           <div className="flex items-center gap-4">
             <Link href="/sign-in" className="w-full">
               <Button variant="outline" className="w-full">
@@ -147,8 +139,24 @@ export default function Header(props: currentUserProps) {
                 <SheetTitle>Menu Utama</SheetTitle>
               </SheetHeader>
               {currentUser ? (
-                <div className="flex gap-4 mt-4">
-                  <h5 className="text-lg font-semibold">{`hello ${currentUser.name} !`}</h5>
+                <div className="flex flex-col gap-8 mt-6">
+                  <div className="flex gap-4 items-center">
+                    <Avatar className={cn("h-16 w-16")}>
+                      <AvatarImage
+                        src={
+                          currentUser?.image || "https://github.com/shadcn.png"
+                        }
+                      />
+                    </Avatar>
+                    <div className="flex flex-col gap-1">
+                      <h3 className="font-bold">{currentUser.name}</h3>
+                      <p className="text-sm text-gray-500">
+                        {currentUser.email}
+                      </p>
+                      <p className="text-sm text-gray-500">5000 poin</p>
+                    </div>
+                  </div>
+                  {/* <h5 className="text-lg font-semibold">{`hello ${currentUser.name} !`}</h5> */}
                   <Button variant="default" onClick={() => signOut()}>
                     Keluar
                   </Button>

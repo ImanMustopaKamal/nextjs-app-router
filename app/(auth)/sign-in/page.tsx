@@ -124,7 +124,11 @@ export default function SignInPage() {
                 Sign In
               </Button>
               <h3>or</h3>
-              <Button variant="outline" className="w-full">
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => signIn("google", { callbackUrl: "/" })}
+              >
                 Google
               </Button>
             </CardFooter>

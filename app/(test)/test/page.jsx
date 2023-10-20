@@ -34,6 +34,7 @@ export default function Test() {
     var sections = container.current.querySelectorAll(".panel");
     sections.forEach((section) => {
       var panel_id = section.id;
+      console.log("panel_id: ", panel_id);
 
       gsap.to(section, {
         scrollTrigger: {
@@ -41,12 +42,11 @@ export default function Test() {
           start: "left center",
           end: "right center",
           markers: true,
-          //     snap: 1 / (sections.length - 1),
           containerAnimation: horizontalScrollTween,
-              // toggleClass: {
-              //   targets: ".dot[data-panel=" + panel_id + "]",
-              //   className: "active",
-              // },
+          toggleClass: {
+            targets: ".dot[data-panel=" + panel_id + "]",
+            className: "active",
+          },
         },
       });
     });
@@ -125,9 +125,24 @@ export default function Test() {
           transform: "translateX(-50%)",
         }}
       >
-        <h1>1</h1>
-        <h1>2</h1>
-        <h1>3</h1>
+        <h1 className="dot" data-panel="one">
+          1
+        </h1>
+        <h1 className="dot" data-panel="two">
+          2
+        </h1>
+        <h1 className="dot" data-panel="three">
+          3
+        </h1>
+        <h1 className="dot" data-panel="four">
+          4
+        </h1>
+        <h1 className="dot" data-panel="five">
+          5
+        </h1>
+        <h1 className="dot" data-panel="six">
+          6
+        </h1>
       </div>
     </>
   );
